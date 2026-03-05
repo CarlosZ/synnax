@@ -1,0 +1,14 @@
+.git/
+
+# direnv
+.direnv/
+
+# nix
+result
+result-*
+
+# git-hooks
+.pre-commit-config.yaml
+
+# run.sh uses .runtime/
+.runtime/
