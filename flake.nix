@@ -28,6 +28,10 @@
   };
 
   outputs =
-    inputs@{ flake-parts, import-tree, ... }:
+    inputs@{
+      flake-parts,
+      import-tree,
+      ...
+    }:
     flake-parts.lib.mkFlake { inherit inputs; } { imports = [ (import-tree ./nix) ]; };
 }

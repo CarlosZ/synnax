@@ -1,10 +1,17 @@
 { lib, ... }:
 let
+  inherit (lib.generators) mkLuaInline;
   toVimLList = l: lib.concatStringsSep "," l;
   attrsToVimLList = attrs: toVimLList (lib.mapAttrsToList (name: value: "${name}:${value}") attrs);
 in
 {
   vim = {
+    globals = {
+      editorconfig = false;
+      root_spec = mkLuaInline ''
+        { "lsp", ".git", "cwd" }
+      '';
+    };
     options = {
       backup = false;
       writebackup = false;
@@ -21,7 +28,6 @@ in
 
       # Search and completion
       completeopt = toVimLList [
-        "fuzzy"
         "menu"
         "menuone"
         "noselect"
@@ -31,7 +37,16 @@ in
 
       # UI and visuals
       breakindent = true; # indent wrapped lines to match the original line
+      conceallevel = 2; # Hide * markup for bold and italic, but not markers with substitutions
       cursorline = true;
+      fillchars = attrsToVimLList {
+        foldopen = "";
+        foldclose = "";
+        fold = " ";
+        foldsep = " ";
+        diff = "╱";
+        eob = " ";
+      };
       linebreak = true;
       list = true; # show invisible characters
       listchars = attrsToVimLList {
@@ -41,6 +56,7 @@ in
         extends = "▶"; # line extends to the right
         precedes = "◀"; # line extends to the left
       };
+      mouse = "";
       number = true;
       relativenumber = true;
       signcolumn = "yes";

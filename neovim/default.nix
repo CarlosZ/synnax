@@ -1,6 +1,9 @@
 {
   imports = [
-    ./options.nix
+    ./editor.nix
     ./keymaps.nix
+    ./options.nix
+    ./plugins
+    ./visuals.nix
   ];
 }
