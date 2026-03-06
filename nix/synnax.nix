@@ -8,7 +8,14 @@
         (inputs.nvf.lib.neovimConfiguration {
           inherit pkgs;
           modules = [ ../neovim ];
-          extraSpecialArgs = { inherit flavor; };
+          extraSpecialArgs =
+            let
+              isDev = flavor == "dev";
+              isMin = flavor == "min";
+            in
+            {
+              inherit isDev isMin;
+            };
         }).neovim
       );
     in
