@@ -1,5 +1,6 @@
 {
   imports = [
+    ./diffview.nix
     ./langs.nix
     ./lsp.nix
     ./lualine.nix

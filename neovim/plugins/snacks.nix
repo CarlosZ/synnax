@@ -60,7 +60,14 @@
           lua = true;
           action = ''
             function()
-              require("snacks").picker.git_log()
+              require("snacks").picker.git_log({
+                confirm = function(picker, item)
+                  picker:close()
+                  if item and item.commit then
+                    vim.cmd("DiffviewOpen " .. item.commit);
+                  end
+                end,
+              })
             end
           '';
           desc = "Git log";
