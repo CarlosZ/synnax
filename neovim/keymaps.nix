@@ -63,6 +63,16 @@
           action = ">gv";
           desc = "Indent right";
         };
+        "p" = {
+          action = ''
+            function()
+              return 'pgv"' .. vim.v.register .. "y"
+            end
+          '';
+          lua = true;
+          noremap = true;
+          expr = true;
+        };
       };
     };
   };
