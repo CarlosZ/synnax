@@ -34,6 +34,7 @@ in
       ];
       ignorecase = true;
       smartcase = true;
+      gdefault = true;
 
       # UI and visuals
       breakindent = true; # indent wrapped lines to match the original line
@@ -72,7 +73,6 @@ in
       splitright = true;
 
       # Input and interaction
-      clipboard = "unnamedplus";
       pumheight = 10; # max items in completion pop-up
       shortmess = "IWFotCclTO";
       timeoutlen = 400; # mapped sequence timeout (ms)
