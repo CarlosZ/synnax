@@ -1,6 +1,5 @@
 {
   imports = [
-    ./autocomplete.nix
     ./editor.nix
     ./keymaps.nix
     ./options.nix
