@@ -9,7 +9,7 @@
     binds.whichKey = {
       enable = true;
       setupOpts = {
-        preset = "modern";
+        preset = "helix";
       };
       register = {
         "<leader>b" = "+Buffers";

@@ -54,6 +54,51 @@
           '';
           desc = "Live grep";
         };
+        "<leader>sb" = {
+          lua = true;
+          action = ''
+            function()
+              require("snacks").picker.lines()
+            end
+          '';
+          desc = "Buffer lines";
+        };
+        "<leader>s\"" = {
+          lua = true;
+          action = ''
+            function()
+              require("snacks").picker.registers()
+            end
+          '';
+          desc = "Registers";
+        };
+        "<leader>sn" = {
+          lua = true;
+          action = ''
+            function()
+              require("snacks").picker.notifications()
+            end
+          '';
+          desc = "Notification History";
+        };
+        "<leader>sm" = {
+          lua = true;
+          action = ''
+            function()
+              require("snacks").picker.marks()
+            end
+          '';
+          desc = "Marks";
+        };
+        "<leader>su" = {
+          lua = true;
+          action = ''
+            function()
+              require("snacks").picker.undo()
+            end
+          '';
+          desc = "Undo History";
+        };
       }
       // lib.optionalAttrs isDev {
         "<leader>gl" = {
@@ -71,6 +116,15 @@
             end
           '';
           desc = "Git log";
+        };
+        "<leader>gs" = {
+          lua = true;
+          action = ''
+            function()
+              require("snacks").picker.git_status()
+            end
+          '';
+          desc = "Modified files";
         };
       };
     };
