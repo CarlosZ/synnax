@@ -59,7 +59,7 @@ in
       };
       mouse = "";
       number = true;
-      relativenumber = true;
+      relativenumber = false;
       signcolumn = "yes";
       termguicolors = true;
       wrap = false;
