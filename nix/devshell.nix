@@ -6,6 +6,7 @@
         buildInputs = [
           config.pre-commit.settings.enabledPackages
           config.pre-commit.settings.package
+          pkgs.stylua
         ];
 
         shellHook = ''
