@@ -6,6 +6,7 @@
     ./langs.nix
     ./lsp.nix
     ./lualine.nix
+    ./smart-splits.nix
     ./snacks.nix
   ];
   vim = {
