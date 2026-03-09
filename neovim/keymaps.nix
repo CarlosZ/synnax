@@ -1,4 +1,9 @@
-{ lib, config, isDev, ... }:
+{
+  lib,
+  config,
+  isDev,
+  ...
+}:
 let
   inherit (lib.nvim.lua) toLuaObject;
   inherit (lib.nvim.dag) entryAnywhere;
@@ -32,6 +37,7 @@ in
       ${lib.optionalString isDev ''
         wk.add({
           { "<leader>g", desc = "+Git", icon = { cat = "filetype", name = "git" } },
+          { "<leader>e", desc = "+Session", icon = { icon = "󰆓", color = "cyan" } },
         })
       ''}
     '';
@@ -76,6 +82,17 @@ in
         "<leader>sr" = {
           action = "<cmd>GrugFar<CR>";
           desc = "Find and replace";
+        };
+      }
+      // lib.optionalAttrs isDev {
+        # Sessions
+        "<leader>el" = {
+          action = "<cmd>SessionManager load_session<CR>";
+          desc = "Load session";
+        };
+        "<leader>ea" = {
+          action = "<cmd>SessionManager load_last_session<CR>";
+          desc = "Load last session";
         };
       };
       visual = {
