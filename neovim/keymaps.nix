@@ -71,6 +71,12 @@ in
           action = "<cmd>UndotreeToggle<CR>";
           desc = "Undo tree";
         };
+
+        # Search
+        "<leader>sr" = {
+          action = "<cmd>GrugFar<CR>";
+          desc = "Find and replace";
+        };
       };
       visual = {
         # Keep selection after indent
