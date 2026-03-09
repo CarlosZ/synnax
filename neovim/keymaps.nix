@@ -1,4 +1,9 @@
-{ lib, isDev, ... }:
+{ lib, config, isDev, ... }:
+let
+  inherit (lib.nvim.lua) toLuaObject;
+  inherit (lib.nvim.dag) entryAnywhere;
+  cfg = config.vim.binds.whichKey;
+in
 {
   vim = {
     globals = {
@@ -11,23 +16,31 @@
       setupOpts = {
         preset = "helix";
       };
-      register = {
-        "<leader>b" = "+Buffers";
-        "<leader>c" = "+Code";
-        "<leader>f" = "+File";
-        "<leader>s" = "+Search";
-        "<leader>w" = "+Window";
-      }
-      // lib.optionalAttrs isDev {
-        "<leader>g" = "+Git";
-      };
     };
+
+    pluginRC.whichkey = entryAnywhere ''
+      local wk = require("which-key")
+      wk.setup (${toLuaObject cfg.setupOpts})
+      wk.add({
+        { "<leader>b", desc = "+Buffers", icon = { icon = "", color = "cyan" }},
+        { "<leader>f", desc = "+File", icon = { icon = "󰈔", color = "cyan" } },
+        { "<leader>s", desc = "+Search", icon = { icon = "", color = "green" } },
+        { "<leader>w", desc = "+Window", icon = { icon = "", color = "blue" } },
+        { "<leader>u", desc = "+Undo", icon = { icon = "↺", color = "yellow" } },
+      })
+
+      ${lib.optionalString isDev ''
+        wk.add({
+          { "<leader>g", desc = "+Git", icon = { cat = "filetype", name = "git" } },
+        })
+      ''}
+    '';
 
     maps = {
       normal = {
         # Buffer management
         "<leader>bd" = {
-          action = ":bdelete<CR>";
+          action = "<cmd>bdelete<CR>";
           desc = "Delete buffer";
         };
         "<leader>bD" = {
@@ -51,6 +64,12 @@
         "<leader>|" = {
           action = "<C-w>v";
           desc = "Split window vertically";
+        };
+
+        # Undo
+        "<leader>ut" = {
+          action = "<cmd>UndotreeToggle<CR>";
+          desc = "Undo tree";
         };
       };
       visual = {
