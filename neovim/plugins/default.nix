@@ -1,5 +1,6 @@
 {
   imports = [
+    ./blink-cmp.nix
     ./diffview.nix
     ./langs.nix
     ./lsp.nix
