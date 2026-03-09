@@ -99,6 +99,15 @@
           '';
           desc = "Undo History";
         };
+        "<leader>uu" = {
+          lua = true;
+          action = ''
+            function()
+              require("snacks").picker.undo()
+            end
+          '';
+          desc = "Undo History";
+        };
       }
       // lib.optionalAttrs isDev {
         "<leader>gl" = {
