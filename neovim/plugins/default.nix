@@ -2,6 +2,7 @@
   imports = [
     ./blink-cmp.nix
     ./diffview.nix
+    ./git.nix
     ./langs.nix
     ./lsp.nix
     ./lualine.nix
