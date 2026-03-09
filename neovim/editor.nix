@@ -1,4 +1,9 @@
-{ lib, config, isDev, ... }:
+{
+  lib,
+  config,
+  isDev,
+  ...
+}:
 {
   vim = {
     clipboard = {

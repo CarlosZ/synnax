@@ -1,13 +1,12 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{ lib, config, ... }:
+let
   inherit (lib.generators) mkLuaInline;
   inherit (lib.nvim.lua) toLuaObject;
   inherit (lib.nvim.dag) entryBefore;
 
-  mkBinding = mode: key: binding: "vim.keymap.set(${toLuaObject mode}, ${toLuaObject key}, ${binding.action}, {buffer=bufnr, noremap=true, silent=true, desc=${toLuaObject binding.desc}})";
+  mkBinding =
+    mode: key: binding:
+    "vim.keymap.set(${toLuaObject mode}, ${toLuaObject key}, ${binding.action}, {buffer=bufnr, noremap=true, silent=true, desc=${toLuaObject binding.desc}})";
 
   mappings = {
     normal = {
@@ -129,7 +128,8 @@
   };
 
   augroup = "synnax_lsp";
-in {
+in
+{
   vim = {
     lsp = {
       enable = true;
@@ -140,11 +140,11 @@ in {
       lspkind.enable = true;
     };
 
-    augroups = [{name = augroup;}];
+    augroups = [ { name = augroup; } ];
     autocmds = [
       {
         group = augroup;
-        event = ["LspAttach"];
+        event = [ "LspAttach" ];
         desc = "LSP on-attach add custom keybinds";
         callback = mkLuaInline ''
           function(event)
@@ -156,7 +156,7 @@ in {
       }
     ];
 
-    pluginRC.lsp-setup = entryBefore ["autocmds"] ''
+    pluginRC.lsp-setup = entryBefore [ "autocmds" ] ''
       local attach_keymaps_custom = function(client, bufnr)
         local wk = require("which-key")
         wk.add({
