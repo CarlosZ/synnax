@@ -1,6 +1,6 @@
 { lib, config, ... }:
 {
-  vim = {
+  config.vim = {
     autocomplete.blink-cmp = {
       enable = true;
       setupOpts = {
@@ -11,13 +11,50 @@
         cmdline = {
           enabled = true;
           keymap = {
-            preset = "cmdline";
+            # This is the same as preset = 'cmdline', however
+            # because Nvf doesn't allow booleans as attribute values for keymap
+            # I need to recreate the entire map *without* map <Left> and <Right>
+            # instead of being able to simply override their mappings to false.
+            # Sighhhhh
+            preset = "none";
             "<Down>" = [
               "select_next"
               "fallback"
             ];
             "<Up>" = [
               "select_prev"
+              "fallback"
+            ];
+
+            "<Tab>" = [
+              "show_and_insert_or_accept_single"
+              "select_next"
+            ];
+            "<S-Tab>" = [
+              "show_and_insert_or_accept_single"
+              "select_prev"
+            ];
+
+            "<C-space>" = [
+              "show"
+              "fallback"
+            ];
+
+            "<C-n>" = [
+              "select_next"
+              "fallback"
+            ];
+            "<C-p>" = [
+              "select_prev"
+              "fallback"
+            ];
+
+            "<C-y>" = [
+              "select_and_accept"
+              "fallback"
+            ];
+            "<C-e>" = [
+              "cancel"
               "fallback"
             ];
           };
