@@ -1,6 +1,7 @@
 {
   imports = [
     ./blink-cmp.nix
+    ./colorful-winset.nix
     ./diffview.nix
     ./git.nix
     ./langs.nix
