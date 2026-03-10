@@ -1,5 +1,6 @@
 {
   imports = [
+    ./agentic.nix
     ./blink-cmp.nix
     ./colorful-winset.nix
     ./diffview.nix

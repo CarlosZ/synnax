@@ -25,6 +25,10 @@
         systems.follows = "systems";
       };
     };
+    llm-agents = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:numtide/llm-agents.nix";
+    };
   };
 
   outputs =

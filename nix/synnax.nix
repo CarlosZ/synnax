@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   perSystem =
-    { pkgs, ... }:
+    { pkgs, inputs', ... }:
     let
       mkPackage = pkgs.callPackage (
         { flavor }:
@@ -15,6 +15,7 @@
             in
             {
               inherit isDev isMin;
+              inherit inputs';
             };
         }).neovim
       );

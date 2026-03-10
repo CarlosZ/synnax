@@ -36,6 +36,7 @@ in
 
       ${lib.optionalString isDev ''
         wk.add({
+          { "<leader>a", desc = "+Agentic", icon = { icon = "", color = "orange" } },
           { "<leader>g", desc = "+Git", icon = { cat = "filetype", name = "git" } },
           { "<leader>e", desc = "+Session", icon = { icon = "󰆓", color = "cyan" } },
         })
@@ -44,6 +45,10 @@ in
 
     maps = {
       normal = {
+        # Annoyances
+        "q:" = {
+          action = "<nop>";
+        };
         # Buffer management
         "<leader>bd" = {
           action = "<cmd>bdelete<CR>";
