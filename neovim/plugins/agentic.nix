@@ -69,9 +69,7 @@ in
           action = ''
             function() require("agentic").toggle() end
           '';
-          mode = [
-            "n"
-          ];
+          mode = [ "n" ];
           lua = true;
           desc = "Toggle Agentic Chat";
         }
@@ -80,9 +78,7 @@ in
           action = ''
             function() require("agentic").add_selection_or_file_to_context() end
           '';
-          mode = [
-            "n"
-          ];
+          mode = [ "n" ];
           lua = true;
           desc = "Add file or sel to Agentic Chat";
         }
@@ -91,9 +87,7 @@ in
           action = ''
             function() require("agentic").new_session() end
           '';
-          mode = [
-            "n"
-          ];
+          mode = [ "n" ];
           lua = true;
           desc = "New Agentic Chat Session";
         }
@@ -102,9 +96,7 @@ in
           action = ''
             function() require("agentic").restore_session() end
           '';
-          mode = [
-            "n"
-          ];
+          mode = [ "n" ];
           lua = true;
           desc = "Restore Agentic Chat Session";
         }
@@ -113,9 +105,7 @@ in
           action = ''
             function() require("agentic").add_current_line_diagnostics() end
           '';
-          mode = [
-            "n"
-          ];
+          mode = [ "n" ];
           lua = true;
           desc = "Add line diagnostics to Agentic Chat";
         }
@@ -124,9 +114,7 @@ in
           action = ''
             function() require("agentic").add_buffer_diagnostics() end
           '';
-          mode = [
-            "n"
-          ];
+          mode = [ "n" ];
           lua = true;
           desc = "Add buffer diagnostics to Agentic Chat";
         }
