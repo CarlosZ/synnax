@@ -49,29 +49,43 @@ let
       });
 in
 {
-  vim = lib.mkIf isDev {
-    lazy.plugins.diffview-nvim.package = lib.mkForce diffviewNvimPkg;
-    utility.diffview-nvim = {
-      enable = true;
+  config = lib.mkIf isDev {
+    vim = {
+      lazy.plugins.diffview-nvim.package = lib.mkForce diffviewNvimPkg;
+      utility.diffview-nvim = {
+        enable = true;
+      };
     };
-    maps = {
-      normal = {
-        "<leader>gd" = {
-          action = "<cmd>DiffviewOpen<cr>";
-          desc = "Open Diff View";
-        };
-        "<leader>gc" = {
-          action = "<cmd>DiffviewClose<cr>";
-          desc = "Close Diff View";
-        };
-        "<leader>gh" = {
-          action = "<cmd>DiffviewFileHistory<cr>";
-          desc = "Open History";
-        };
-        "<leader>gf" = {
-          action = "<cmd>DiffviewFileHistory %<cr>";
-          desc = "Open File History";
-        };
+
+    synnax.keys = {
+      Git = {
+        rootKey = "<leader>g";
+        maps = [
+          {
+            key = "d";
+            mode = [ "n" ];
+            action = "<cmd>DiffviewOpen<cr>";
+            desc = "Open Diff View";
+          }
+          {
+            key = "c";
+            mode = [ "n" ];
+            action = "<cmd>DiffviewClose<cr>";
+            desc = "Close Diff View";
+          }
+          {
+            key = "h";
+            mode = [ "n" ];
+            action = "<cmd>DiffviewFileHistory<cr>";
+            desc = "Open History";
+          }
+          {
+            key = "f";
+            mode = [ "n" ];
+            action = "<cmd>DiffviewFileHistory %<cr>";
+            desc = "Open File History";
+          }
+        ];
       };
     };
   };

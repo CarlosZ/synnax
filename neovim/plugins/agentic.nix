@@ -63,62 +63,70 @@ in
           };
         };
       };
-      keymaps = [
-        {
-          key = "<leader>at";
-          action = ''
-            function() require("agentic").toggle() end
-          '';
-          mode = [ "n" ];
-          lua = true;
-          desc = "Toggle Agentic Chat";
-        }
-        {
-          key = "<leader>aa";
-          action = ''
-            function() require("agentic").add_selection_or_file_to_context() end
-          '';
-          mode = [ "n" ];
-          lua = true;
-          desc = "Add file or sel to Agentic Chat";
-        }
-        {
-          key = "<leader>an";
-          action = ''
-            function() require("agentic").new_session() end
-          '';
-          mode = [ "n" ];
-          lua = true;
-          desc = "New Agentic Chat Session";
-        }
-        {
-          key = "<leader>ar";
-          action = ''
-            function() require("agentic").restore_session() end
-          '';
-          mode = [ "n" ];
-          lua = true;
-          desc = "Restore Agentic Chat Session";
-        }
-        {
-          key = "<leader>al";
-          action = ''
-            function() require("agentic").add_current_line_diagnostics() end
-          '';
-          mode = [ "n" ];
-          lua = true;
-          desc = "Add line diagnostics to Agentic Chat";
-        }
-        {
-          key = "<leader>ad";
-          action = ''
-            function() require("agentic").add_buffer_diagnostics() end
-          '';
-          mode = [ "n" ];
-          lua = true;
-          desc = "Add buffer diagnostics to Agentic Chat";
-        }
-      ];
+    };
+
+    synnax.keys = {
+      "Agentic" = {
+        rootKey = "<leader>a";
+        icon = "";
+        iconColor = "orange";
+        maps = [
+          {
+            key = "t";
+            mode = [ "n" ];
+            action = ''
+              function() require("agentic").toggle() end
+            '';
+            desc = "Toggle Agentic Chat";
+            lua = true;
+          }
+          {
+            key = "a";
+            mode = [ "n" ];
+            action = ''
+              function() require("agentic").add_selection_or_file_to_context() end
+            '';
+            desc = "Add file or sel to Agentic Chat";
+            lua = true;
+          }
+          {
+            key = "n";
+            mode = [ "n" ];
+            action = ''
+              function() require("agentic").new_session() end
+            '';
+            desc = "New Agentic Chat Session";
+            lua = true;
+          }
+          {
+            key = "r";
+            mode = [ "n" ];
+            action = ''
+              function() require("agentic").restore_session() end
+            '';
+            desc = "Restore Agentic Chat Session";
+            lua = true;
+          }
+          {
+            key = "l";
+            mode = [ "n" ];
+            action = ''
+              function() require("agentic").add_current_line_diagnostics() end
+            '';
+            desc = "Add line diagnostics to Agentic Chat";
+            lua = true;
+          }
+          {
+            key = "d";
+            mode = [ "n" ];
+            action = ''
+              function() require("agentic").add_buffer_diagnostics() end
+            '';
+            desc = "Add buffer diagnostics to Agentic Chat";
+            lua = true;
+          }
+        ];
+      };
     };
   };
 }
