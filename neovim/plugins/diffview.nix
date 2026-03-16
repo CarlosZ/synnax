@@ -1,4 +1,5 @@
 {
+  flakeInputs,
   pkgs,
   lib,
   isDev,
@@ -8,12 +9,7 @@ let
   diffviewNvimPkg =
     (pkgs.vimUtils.buildVimPlugin {
       name = "diffview-nvim";
-      src = pkgs.fetchFromGitHub {
-        owner = "dlyongemallo";
-        repo = "diffview.nvim";
-        tag = "v0.21";
-        hash = "sha256-mlp7NQhnPD4uJlP7foIhD5EvQBrVHH4tLgXqy7IvgsI=";
-      };
+      src = flakeInputs.diffview-nvim;
       nvimSkipModules = [
         "diffview.api.views.diff.diff_view"
         "diffview.job"

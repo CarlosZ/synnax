@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "agentic-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772968487,
+        "narHash": "sha256-/WlW9U+vfN/fm+uLnquPW/X2qYbOs1y1lODH3tGk9hI=",
+        "owner": "carlos-algms",
+        "repo": "agentic.nvim",
+        "rev": "dcbb969167a9e24dc95fa7c213a28fbb1a600f13",
+        "type": "github"
+      },
+      "original": {
+        "owner": "carlos-algms",
+        "repo": "agentic.nvim",
+        "rev": "dcbb969167a9e24dc95fa7c213a28fbb1a600f13",
+        "type": "github"
+      }
+    },
     "blueprint": {
       "inputs": {
         "nixpkgs": [
@@ -56,6 +73,40 @@
       "original": {
         "owner": "nix-community",
         "repo": "bun2nix",
+        "type": "github"
+      }
+    },
+    "colorful-winsep-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771503745,
+        "narHash": "sha256-xZKDP/9iG2+tt8nqNpirvCe5olNj/jLYrVV9D6o+UXk=",
+        "owner": "nvim-zh",
+        "repo": "colorful-winsep.nvim",
+        "rev": "84432d9966fafaa08dd9040c98b0011045d8e964",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-zh",
+        "repo": "colorful-winsep.nvim",
+        "rev": "84432d9966fafaa08dd9040c98b0011045d8e964",
+        "type": "github"
+      }
+    },
+    "diffview-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772303735,
+        "narHash": "sha256-mlp7NQhnPD4uJlP7foIhD5EvQBrVHH4tLgXqy7IvgsI=",
+        "owner": "dlyongemallo",
+        "repo": "diffview.nvim",
+        "rev": "886640dec1ce5404f49f6c3e66ac134794bf2255",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dlyongemallo",
+        "ref": "v0.21",
+        "repo": "diffview.nvim",
         "type": "github"
       }
     },
@@ -327,6 +378,9 @@
     },
     "root": {
       "inputs": {
+        "agentic-nvim": "agentic-nvim",
+        "colorful-winsep-nvim": "colorful-winsep-nvim",
+        "diffview-nvim": "diffview-nvim",
         "flake-parts": "flake-parts",
         "import-tree": "import-tree",
         "llm-agents": "llm-agents",

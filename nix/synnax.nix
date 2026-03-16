@@ -15,6 +15,7 @@
           in {
             inherit isDev isMin;
             inherit inputs';
+            flakeInputs = inputs;
           };
         }).neovim
     );

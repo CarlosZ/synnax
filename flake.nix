@@ -29,6 +29,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/llm-agents.nix";
     };
+    agentic-nvim = {
+      url = "github:carlos-algms/agentic.nvim/dcbb969167a9e24dc95fa7c213a28fbb1a600f13";
+      flake = false;
+    };
+    diffview-nvim = {
+      url = "github:dlyongemallo/diffview.nvim/v0.21";
+      flake = false;
+    };
+    colorful-winsep-nvim = {
+      url = "github:nvim-zh/colorful-winsep.nvim/84432d9966fafaa08dd9040c98b0011045d8e964";
+      flake = false;
+    };
   };
 
   outputs =

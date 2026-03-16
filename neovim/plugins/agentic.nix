@@ -1,5 +1,6 @@
 {
   inputs',
+  flakeInputs,
   pkgs,
   lib,
   isDev,
@@ -9,13 +10,7 @@ let
   agenticNvimPkg =
     (pkgs.vimUtils.buildVimPlugin {
       name = "agentic-nvim";
-      version = "2026-03-08";
-      src = pkgs.fetchFromGitHub {
-        owner = "carlos-algms";
-        repo = "agentic.nvim";
-        rev = "dcbb969167a9e24dc95fa7c213a28fbb1a600f13";
-        hash = "sha256-/WlW9U+vfN/fm+uLnquPW/X2qYbOs1y1lODH3tGk9hI=";
-      };
+      src = flakeInputs.agentic-nvim;
 
       nvimSkipModules = [
         "agentic.ui.tool_call_diff.test"
