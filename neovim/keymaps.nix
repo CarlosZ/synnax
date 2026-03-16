@@ -1,8 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}:
+{ lib, config, ... }:
 let
   inherit (lib.generators) mkLuaInline;
   inherit (lib.options) mkOption literalMD;
