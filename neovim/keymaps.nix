@@ -277,6 +277,20 @@ in
         expr = true;
         lua = true;
       }
+
+      # Window management
+      {
+        key = "<leader>-";
+        mode = [ "n" ];
+        action = "<C-w>s";
+        desc = "Split window horizontally";
+      }
+      {
+        key = "<leader>|";
+        mode = [ "n" ];
+        action = "<C-w>v";
+        desc = "Split window vertically";
+      }
     ];
   };
 }
