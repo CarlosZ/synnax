@@ -29,6 +29,7 @@
             version = "0.0.1";
             meta = {
               license = pkgs.lib.licenses.mit;
+              mainProgram = pname;
             };
           }
           ''
