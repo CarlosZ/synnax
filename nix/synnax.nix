@@ -18,7 +18,12 @@
               inherit inputs';
               flakeInputs = inputs;
             };
-        }).neovim
+        }).neovim.overrideAttrs
+          (_: {
+            meta = {
+              license = pkgs.lib.licenses.mit;
+            };
+          })
       );
     in
     {
