@@ -22,4 +22,4 @@ export XDG_CACHE_HOME="${RUNTIME_DIR}/cache"
 mkdir -p "${XDG_DATA_HOME}" "${XDG_STATE_HOME}" "${XDG_CACHE_HOME}"
 trap 'rm -rf "${RUNTIME_DIR}"' EXIT
 
-./result/bin/nvim
+./result/bin/"synnax-${FLAVOR}"
