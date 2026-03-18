@@ -4,9 +4,6 @@
   isDev,
   ...
 }:
-let
-  inherit (lib.nvim.dag) entryBefore;
-in
 {
   vim = {
     clipboard = {
@@ -25,15 +22,6 @@ in
       };
       mappings = lib.mapAttrs (_: _: null) config.vim.session.nvim-session-manager.mappings;
     };
-
-    luaConfigRC.nvim-session-manager = lib.mkIf isDev (
-      entryBefore [ "nvim-session-manager" ] ''
-        local wk = require("which-key")
-        wk.add({
-          { "<leader>e", desc = "+Session", icon = { icon = "󰆓", color = "cyan" } },
-        })
-      ''
-    );
   };
 
   synnax.keys = {
@@ -142,7 +130,12 @@ in
           mode = [ "n" ];
           action = ''
             function()
-              require("snacks").picker.notifications()
+              require("snacks").picker.notifications({
+                confirm = function(picker, item)
+                  picker:close()
+                  vim.fn.setreg("+", item.preview.text)
+                end,
+              })
             end
           '';
           desc = "Notification History";
