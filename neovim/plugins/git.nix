@@ -18,7 +18,6 @@ in
       local wk = require("which-key")
       wk.add({
         { "<leader>h", hidden = true },
-        { "<leader>g", desc = "+Git", icon = { cat = "filetype", name = "git" } },
       })
     '';
   };
