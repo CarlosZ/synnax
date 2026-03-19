@@ -26,7 +26,7 @@ in
             {
               "buffers",
               show_filename_only = false,
-              mode = 4,
+              mode = 2,
             }
           '')
         ];
@@ -35,7 +35,7 @@ in
             {
               "tabs",
               cond = function() return #vim.api.nvim_list_tabpages() > 1 end,
-            } 
+            }
           '')
         ];
       };
