@@ -29,6 +29,11 @@
       rootKey = "<leader>b";
       icon = "";
       iconColor = "cyan";
+      expand = ''
+        function()
+          return require("which-key.extras").expand.buf()
+        end
+      '';
       maps = [
         {
           key = "b";

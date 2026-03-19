@@ -85,9 +85,13 @@ let
         default = null;
         description = "The icon color to be used by the mappings in this group.";
       };
+      expand = mkOption {
+        type = nullOr str;
+        default = null;
+        description = "Expansion function for group";
+      };
       maps = mkOption {
         type = listOf mapType;
-        # type = listOf (either mapType groupType);
         description = "Custom which-key keybindings.";
         example = ''
            [
@@ -131,7 +135,14 @@ let
         let
           finalName = if group.name == null then name else group.name;
         in
-        mkLuaInline "{ ${toLua' group.rootKey}, group = ${toLua' finalName}, ${mkRest (mkIcon group)} }";
+        mkLuaInline "{ ${toLua' group.rootKey}, group = ${toLua' finalName}, ${
+          mkRest (
+            (mkIcon group)
+            // (lib.optionalAttrs (group ? expand && group.expand != null) {
+              expand = mkLuaInline group.expand;
+            })
+          )
+        } }";
     in
     lib.concatLists (
       lib.attrsets.mapAttrsToList (
@@ -224,7 +235,7 @@ in
             rules = false,
           },
         });
-        wk.add(${lib.generators.toLua { } (mkWkGroups config.synnax.keys)})
+        wk.add(${toLua' (mkWkGroups config.synnax.keys)})
         ${mkMappings config.synnax.keys}
       '';
     };
