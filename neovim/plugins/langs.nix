@@ -1,8 +1,4 @@
-{
-  lib,
-  isDev,
-  ...
-}:
+{ lib, isDev, ... }:
 {
   vim = {
     languages = {
@@ -21,7 +17,10 @@
     // lib.optionalAttrs isDev {
       bash.enable = true;
       lua.enable = true;
-      nix.enable = true;
+      nix = {
+        enable = true;
+        format.type = [ "nixfmt" ];
+      };
     };
   };
 }
