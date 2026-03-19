@@ -3,24 +3,26 @@
   perSystem =
     { pkgs, inputs', ... }:
     let
+      mkNeovim =
+        flavor:
+        (inputs.nvf.lib.neovimConfiguration {
+          inherit pkgs;
+          modules = [ ../neovim ];
+          extraSpecialArgs =
+            let
+              isDev = flavor == "dev";
+              isMin = flavor == "min";
+            in
+            {
+              inherit isDev isMin;
+              inherit inputs';
+              flakeInputs = inputs;
+            };
+        }).neovim;
+
       mkPackage = pkgs.callPackage (
         { flavor }:
         let
-          pkg =
-            (inputs.nvf.lib.neovimConfiguration {
-              inherit pkgs;
-              modules = [ ../neovim ];
-              extraSpecialArgs =
-                let
-                  isDev = flavor == "dev";
-                  isMin = flavor == "min";
-                in
-                {
-                  inherit isDev isMin;
-                  inherit inputs';
-                  flakeInputs = inputs;
-                };
-            }).neovim;
           pname = "synnax-${flavor}";
         in
         pkgs.runCommand pname
@@ -34,15 +36,32 @@
           }
           ''
             mkdir -p $out/bin
-            ln -s ${pkg}/bin/nvim $out/bin/${pname}
+            ln -s ${mkNeovim flavor}/bin/nvim $out/bin/${pname}
           ''
       );
+
+      mkPrintConfig =
+        { flavor }:
+        let
+          pname = "print-config-${flavor}";
+        in
+        pkgs.runCommand pname
+          {
+            inherit pname;
+            version = "0.0.1";
+          }
+          ''
+            mkdir -p $out/bin/let
+            ln -s ${mkNeovim flavor}/bin/nvf-print-config $out/bin/nvf-print-config
+          '';
     in
     {
       packages = rec {
         default = dev;
         dev = mkPackage { flavor = "dev"; };
+        print-dev = mkPrintConfig { flavor = "dev"; };
         min = mkPackage { flavor = "min"; };
+        print-min = mkPrintConfig { flavor = "min"; };
       };
     };
 }

@@ -9,6 +9,6 @@ if [[ $FLAVOR != "dev" && $FLAVOR != "min" ]]; then
   exit 1
 fi
 
-nix build "#${FLAVOR}"
+nix build "#print-${FLAVOR}"
 
 ./result/bin/nvf-print-config | stylua - | bat --language lua --style plain
