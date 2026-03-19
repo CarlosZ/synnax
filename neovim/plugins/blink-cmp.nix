@@ -9,6 +9,7 @@
             preset = "enter";
             "<C-y>" = [ "select_and_accept" ];
           };
+          completion.trigger.show_on_keyword = true;
           cmdline = {
             enabled = true;
             keymap = {
