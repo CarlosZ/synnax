@@ -62,6 +62,8 @@ in
       relativenumber = false;
       signcolumn = "yes";
       termguicolors = true;
+      title = true;
+      titlestring = "%t - neovim";
       wrap = false;
 
       # Scrolling and windowing

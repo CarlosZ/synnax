@@ -252,6 +252,23 @@ in
         desc = "Smart find";
         lua = true;
       }
+      {
+        key = "<esc>";
+        mode = [
+          "i"
+          "n"
+          "s"
+        ];
+        action = ''
+          function()
+            vim.cmd("noh")
+            return "<esc>"
+          end
+        '';
+        desc = "Escape and Clear hlsearch";
+        expr = true;
+        lua = true;
+      }
       # Annoyances
       {
         key = "q:";
